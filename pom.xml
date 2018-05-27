@@ -13,7 +13,7 @@
         <kotlin.version>1.2.41</kotlin.version>
         <cucumber.version>2.3.1</cucumber.version>
         <junit.version>4.12</junit.version>
-        <selenium.version>3.1.0</selenium.version>
+        <selenium.version>3.4.0</selenium.version>
     </properties>
 
     <dependencies>
@@ -69,8 +69,12 @@
             <artifactId>selenium-support</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>2.2.1</version>
+        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -127,6 +131,41 @@
                         <goals> <goal>testCompile</goal> </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.temyers</groupId>
+                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+                <version>2.2.0</version>
+                <executions>
+                    <execution>
+                        <id>generateRunners</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>generateRunners</goal>
+                        </goals>
+                        <configuration>
+                            <glue>stepdefinitions</glue>
+                            <featuresDirectory>src/test/resources/feature</featuresDirectory>
+                            <packageName>GINTest</packageName>
+                            <namingScheme>pattern</namingScheme>
+                            <tags>"~@broken"</tags>
+                            <parallelScheme>FEATURE</parallelScheme>
+                            <namingPattern>Test{f}{c}</namingPattern>
+                            <strict>true</strict>
+                            <format>pretty,html,json</format>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <forkCount>1</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>
