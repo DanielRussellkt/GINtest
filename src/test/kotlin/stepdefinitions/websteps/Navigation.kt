@@ -14,5 +14,9 @@ class Navigation: En {
          Given("^I navigate (back|forward) a page") {direction: String ->
              if(direction == "back") driver().navigate().back() else driver().navigate().forward()
          }
+
+        Given("I refresh the page") {
+            driver().navigate().refresh()
+        }
     }
 }

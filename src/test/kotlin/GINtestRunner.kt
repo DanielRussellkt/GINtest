@@ -7,7 +7,10 @@ import org.junit.runner.RunWith
         features = ["src/test/resources/feature"],
         glue = ["stepdefinitions"],
         tags = [""],
-        format = ["pretty"]
+        format = ["pretty"],
+        plugin = ["html:target/cucumber-reports"]
         )
 
 class GINtestRunner
+
+
