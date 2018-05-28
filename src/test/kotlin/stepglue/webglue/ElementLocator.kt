@@ -7,7 +7,7 @@ import stepglue.xpathformatter.XpathProperties
 object ElementLocator {
     fun findElementByXpath(xpathWrapper: Array<String>):  String? {
         XpathProperties.values().forEach {
-            val toSearch = xpathWrapper.joinToString(separator = it.name.toLowerCase())
+            val toSearch = xpathWrapper.joinToString(separator = it.xpathTag)
             if (!driver().findElements( By.xpath(toSearch) ).isEmpty()) return toSearch
         }
         return null

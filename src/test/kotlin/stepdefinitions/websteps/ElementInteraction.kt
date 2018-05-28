@@ -5,6 +5,7 @@ import stepglue.xpathformatter.XpathFormatter.generateWebXpath
 import drivers.DriverManager.driver
 import org.openqa.selenium.By
 import stepglue.webglue.ElementLocator
+import stepglue.xpathformatter.XpathProperties
 import kotlin.test.fail
 
 class ElementInteraction: En {
@@ -15,7 +16,5 @@ class ElementInteraction: En {
                     ElementLocator.findElementByXpath(generateWebXpath(element, properties?.split(","), values?.split(","))) ?: fail("Element $element not found on page")
             )).click()
         }
-
-
     }
 }

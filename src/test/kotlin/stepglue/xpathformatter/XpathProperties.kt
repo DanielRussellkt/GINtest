@@ -1,8 +1,9 @@
 package stepglue.xpathformatter
 
-enum class XpathProperties {
-    ID,
-    NAME,
-    CLASS,
-    PLACEHOLDER
+enum class XpathProperties(val xpathTag: String) {
+    TEXT("text()"),
+    ID("@id"),
+    NAME("@name"),
+    CLASS("@class"),
+    PLACEHOLDER("@placeholder"),
 }
