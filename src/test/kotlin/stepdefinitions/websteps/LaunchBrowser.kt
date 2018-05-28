@@ -1,6 +1,5 @@
 package stepdefinitions.websteps
 
-import cucumber.api.Scenario
 import cucumber.api.java8.En
 import drivers.DriverManager.openBrowser
 import drivers.DriverManager.driver

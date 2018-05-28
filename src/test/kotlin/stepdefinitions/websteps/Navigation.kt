@@ -1,9 +1,7 @@
 package stepdefinitions.websteps
 
 import cucumber.api.java8.En
-import drivers.DriverManager.openBrowser
 import drivers.DriverManager.driver
-import drivers.DriverManager.closeBrowser
 
 class Navigation: En {
     init {
