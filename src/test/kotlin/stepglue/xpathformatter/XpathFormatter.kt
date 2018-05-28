@@ -4,7 +4,6 @@ import kotlin.test.assertEquals
 
 object XpathFormatter {
         fun generateWebXpath (element: String, additionalProperties: List<String>?, additionalValues: List<String>?): Array<String> {
-            println("\n\n\nXpathHead = .//*[@\nXpath tail = ${generateXpathTail(element, additionalProperties, additionalValues)}")
             return arrayOf(".//*[@", generateXpathTail(element, additionalProperties, additionalValues))
         }
 
