@@ -5,14 +5,16 @@ import stepglue.xpathformatter.XpathFormatter.generateWebXpath
 import drivers.DriverManager.driver
 import org.openqa.selenium.By
 import stepglue.webglue.ElementLocator
-import stepglue.xpathformatter.XpathProperties
 import kotlin.test.fail
 
 class ElementInteraction: En {
     init {
         Given("^I click \"([^\"]*)\"(?: where \"([^\"]*)\" [is|are] \"([^\"]*)\")?") {element: String, properties: String?, values: String? ->
             driver().findElement(By.xpath(
-                    ElementLocator.findElementByXpath(generateWebXpath(element, properties?.split(","), values?.split(","))) ?: fail("Element $element not found on page")
+                    ElementLocator.findElementByXpath(
+                            generateWebXpath(element, properties?.split(","), values?.split(","))
+                    )
+                    ?: fail("Element $element not found on page")
             )).click()
         }
     }
