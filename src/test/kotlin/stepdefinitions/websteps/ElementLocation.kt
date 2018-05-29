@@ -5,6 +5,7 @@ import kotlin.test.fail
 import stepglue.webglue.ElementLocation.isElementFound
 import stepglue.webglue.ElementWaits.waitForElement
 import stepglue.webglue.ElementWaits.waitForVanish
+import stepglue.webglue.PageScrolling.scrollUntilFound
 
 
 class ElementLocation: En {
@@ -19,6 +20,11 @@ class ElementLocation: En {
                 "appears" -> if (!waitForElement(element, properties, values, (timeout ?: 20) * 1000)) fail("$element did not appear in ${timeout ?: 20} seconds")
                 "disappears" -> if (!waitForVanish(element, properties, values, (timeout ?: 20) * 1000)) fail("$element did not disappear in ${timeout ?: 20} seconds")
             }
+            Thread.sleep(4000)
+        }
+
+        Given("^I scroll (?:(up|down|left|right) )?until I see\"([^\"]*)\"(?: where \"([^\"]*)\" [is|are] \"([^\"]*)\")?") {direction: String, element: String, properties: String?, values: String? ->
+            if (!scrollUntilFound(direction, element, properties, values)) fail("$element not found on page")
         }
     }
 }

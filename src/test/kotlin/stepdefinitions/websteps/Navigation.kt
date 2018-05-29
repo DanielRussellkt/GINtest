@@ -2,6 +2,7 @@ package stepdefinitions.websteps
 
 import cucumber.api.java8.En
 import drivers.DriverManager.driver
+import stepglue.webglue.PageScrolling.scroll
 
 class Navigation: En {
     init {
@@ -15,6 +16,10 @@ class Navigation: En {
 
         Given("I refresh the page") {
             driver().navigate().refresh()
+        }
+
+        Given("I scroll (up|down|left|right)") { direction: String ->
+            scroll(direction)
         }
     }
 }

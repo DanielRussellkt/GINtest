@@ -8,7 +8,9 @@ object ElementLocator {
     fun findElementByXpath(xpathWrapper: Array<String>):  String? {
         XpathProperties.values().forEach {
             val toSearch = xpathWrapper.joinToString(separator = it.xpathTag)
-            if (!driver().findElements( By.xpath(toSearch) ).isEmpty()) return toSearch
+            if (!driver().findElements( By.xpath(toSearch) ).isEmpty()) {
+                return toSearch
+            }
         }
         return null
     }
