@@ -9,7 +9,7 @@ import kotlin.test.fail
 
 class ElementInteraction: En {
     init {
-        Given("^I click \"([^\"]*)\"(?: where \"([^\"]*)\" [is|are] \"([^\"]*)\")?") {element: String, properties: String?, values: String? ->
+        Given("^I click \"([^\"]*)\"(?: where \"([^\"]*)\" [is|are] \"([^\"]*)\")?$") {element: String, properties: String?, values: String? ->
             driver().findElement(By.xpath(
                     ElementLocator.findElementByXpath(
                             generateWebXpath(element, properties?.split(","), values?.split(","))

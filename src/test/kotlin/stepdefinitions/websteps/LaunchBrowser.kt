@@ -7,12 +7,12 @@ import drivers.DriverManager.closeBrowser
 
 class LaunchBrowser: En {
     init{
-        Given("^I open \"(Firefox|Chrome)\"") { browser : String ->
+        Given("^I open \"(Firefox|Chrome)\"$") { browser : String ->
             openBrowser(browser)
             driver().manage().window().maximize()
         }
 
-        Given("^I close the browser(?: (session))?") { session: String? ->
+        Given("^I close the browser(?: (session))?$") { session: String? ->
             closeBrowser(session != null, true)
         }
     }

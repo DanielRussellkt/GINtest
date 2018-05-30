@@ -6,19 +6,19 @@ import stepglue.webglue.PageScrolling.scroll
 
 class Navigation: En {
     init {
-        Given("^I navigate to \"([^\"&^ ]*)\"") { page: String ->
+        Given("^I navigate to \"([^\"&^ ]*)\"$") { page: String ->
             driver().navigate().to(page)
         }
 
-         Given("^I navigate (back|forward) a page") {direction: String ->
+         Given("^I navigate (back|forward) a page$") {direction: String ->
              if(direction == "back") driver().navigate().back() else driver().navigate().forward()
          }
 
-        Given("I refresh the page") {
+        Given("I refresh the page$") {
             driver().navigate().refresh()
         }
 
-        Given("I scroll (up|down|left|right)") { direction: String ->
+        Given("I scroll (up|down|left|right)$") { direction: String ->
             scroll(direction)
         }
     }
